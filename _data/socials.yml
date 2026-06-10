@@ -1,0 +1,12 @@
+# this file contains the social media links and usernames of the author
+# the socials will be displayed in the order they are defined here
+# for more information, please refer to the documentation of jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
+email: gbryan@astro.columbia.edu # your email address
+orcid_id: 0000-0003-2630-9228 # your ORCID ID
+github_username: gregbryan # your GitHub user name
+# scholar_userid: # your Google Scholar ID
+rss_icon: false
+custom_social:
+  title: NASA/ADS
+  url: https://ui.adsabs.harvard.edu/search/q=author%3A%22Bryan%2C%20Greg%20L.%22&sort=date%20desc
+  logo: /assets/img/ads-logo.svg

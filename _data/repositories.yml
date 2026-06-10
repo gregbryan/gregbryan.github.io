@@ -1,0 +1,9 @@
+github_users:
+  - gregbryan
+
+repo_description_lines_max: 2
+
+github_repos:
+  - enzo-project/enzo-dev
+  - enzo-project/enzo-e
+  - grackle-project/grackle
