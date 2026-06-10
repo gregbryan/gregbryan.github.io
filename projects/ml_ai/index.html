@@ -1,0 +1,268 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Machine Learning &amp; AI | Greg L. Bryan </title> <meta name="author" content="Greg L. Bryan"> <meta name="description" content="Connecting simulations to observations with machine learning and simulation-based inference"> <meta name="keywords" content="astrophysics, cosmology, galaxy formation, simulations, enzo, circumgalactic medium, columbia university"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%94%AD&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://gregbryan.github.io/projects/ml_ai/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Greg</span> L. Bryan </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">research </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Machine Learning &amp; AI</h1> <p class="post-description">Connecting simulations to observations with machine learning and simulation-based inference</p> </header> <article> <p>Modern cosmology and galaxy formation share a problem: the models are too complex for analytic likelihoods, and the simulations are too expensive to run everywhere we need them. Machine learning offers a way through — emulators that learn the mapping from physical parameters to observables, neural networks that extract cosmological information directly from field-level data, and simulation-based (implicit likelihood) inference that turns suites of simulations into rigorous posteriors on the parameters of cosmology and galaxy formation.</p> <p>Much of this work builds on the CAMELS project — thousands of cosmological simulations with varied cosmology and feedback physics, designed from the start as a machine-learning training set <a class="citation" href="#2021ApJ...915...71V">(Villaescusa-Navarro et al., 2021; Villaescusa-Navarro et al., 2023)</a>. The image above shows gas surface-density maps from a sample of these simulations. With suites like these we can perform robust field-level inference of cosmological parameters <a class="citation" href="#2023ApJ...944...27S">(Shao et al., 2023)</a> and, conversely, use observations to calibrate the subgrid physics of the simulations themselves <a class="citation" href="#2023ApJ...944...67J">(Jo et al., 2023)</a>.</p> <p>On the methods side, we develop tools and generative models for the community: the LtU-ILI framework packages the full simulation-based inference pipeline for astrophysical applications <a class="citation" href="#2024OJAp....7E..54H">(Ho et al., 2024)</a>, autoregressive networks generate halo catalogs directly <a class="citation" href="#2025PhRvD.112j3503P">(Pandey et al., 2025)</a>, and hybrid physics-informed approaches like sapphire aim to combine the interpretability of analytic models with the flexibility of machine learning <a class="citation" href="#2026arXiv260406318P">(Pandya et al., 2026)</a>.</p> </article> <h2>References</h2> <div class="publications"> <h2 class="bibliography">2026</h2> <ol class="bibliography"><li> <div class="row"> <div class="col col-sm-2 abbr"> <abbr class="badge rounded w-100">arXiv</abbr> </div> <div id="2026arXiv260406318P" class="col-sm-8"> <div class="title">Introducing sapphire: Towards Hybrid Physics-Informed, Data-Driven Modeling of Galaxy Formation</div> <div class="author"> Viraj Pandya, <em>Greg L. Bryan</em>, T. Lucas Makinen, and <span class="more-authors" title="click to view 18 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '18 more authors' ? 'Austen Gabrielpillai, Christopher Carr, Drummond B. Fielding, Lars Hernquist, Matthew Ho, Kartheik Iyer, Christian Kragh Jespersen, Sophie Koudmani, Marta Laska, Pablo Lemos, Christopher C. Lovell, Lucia A. Perez, William F. Robinson, Rachel S. Somerville, Tjitske K. Starkenburg, Richard Stiskalek, Bryan Terrazas, G. Mark Voit' : '18 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">18 more authors</span> </div> <div class="periodical"> <em>arXiv e-prints</em>, Apr 2026 </div> <div class="periodical"> </div> <div class="links"> <a href="https://doi.org/10.48550/arXiv.2604.06318" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a href="http://arxiv.org/abs/2604.06318" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://ui.adsabs.harvard.edu/abs/2026arXiv260406318P" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">2026arXiv260406318P</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{{Pandya}, Viraj and {Bryan}, Greg L. and {Makinen}, T. Lucas and {Gabrielpillai}, Austen and {Carr}, Christopher and {Fielding}, Drummond B. and {Hernquist}, Lars and {Ho}, Matthew and {Iyer}, Kartheik and {Jespersen}, Christian Kragh and {Koudmani}, Sophie and {Laska}, Marta and {Lemos}, Pablo and {Lovell}, Christopher C. and {Perez}, Lucia A. and {Robinson}, Jr., William F. and {Somerville}, Rachel S. and {Starkenburg}, Tjitske K. and {Stiskalek}, Richard and {Terrazas}, Bryan and {Voit}, G. Mark}</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{{Introducing sapphire: Towards Hybrid Physics-Informed, Data-Driven Modeling of Galaxy Formation}}</span><span class="p">,</span>
+  <span class="na">journal</span> <span class="p">=</span> <span class="s">{arXiv e-prints}</span><span class="p">,</span>
+  <span class="na">keywords</span> <span class="p">=</span> <span class="s">{Astrophysics of Galaxies}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2026}</span><span class="p">,</span>
+  <span class="na">month</span> <span class="p">=</span> <span class="nv">apr</span><span class="p">,</span>
+  <span class="na">eid</span> <span class="p">=</span> <span class="s">{arXiv:2604.06318}</span><span class="p">,</span>
+  <span class="na">pages</span> <span class="p">=</span> <span class="s">{arXiv:2604.06318}</span><span class="p">,</span>
+  <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.48550/arXiv.2604.06318}</span><span class="p">,</span>
+  <span class="na">archiveprefix</span> <span class="p">=</span> <span class="s">{arXiv}</span><span class="p">,</span>
+  <span class="na">primaryclass</span> <span class="p">=</span> <span class="s">{astro-ph.GA}</span><span class="p">,</span>
+  <span class="na">adsurl</span> <span class="p">=</span> <span class="s">{https://ui.adsabs.harvard.edu/abs/2026arXiv260406318P}</span><span class="p">,</span>
+  <span class="na">adsnote</span> <span class="p">=</span> <span class="s">{Provided by the SAO/NASA Astrophysics Data System}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li></ol> <h2 class="bibliography">2025</h2> <ol class="bibliography"><li> <div class="row"> <div class="col col-sm-2 abbr"> <abbr class="badge rounded w-100">PRD</abbr> </div> <div id="2025PhRvD.112j3503P" class="col-sm-8"> <div class="title">Creating halos with autoregressive multistage networks</div> <div class="author"> Shivam Pandey, Chirag Modi, Benjamin D. Wandelt, and <span class="more-authors" title="click to view 7 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '7 more authors' ? 'Deaglan J. Bartlett, Adrian E. Bayer, Greg L. Bryan, Matthew Ho, Guilhem Lavaux, T. Lucas Makinen, Francisco Villaescusa-Navarro' : '7 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">7 more authors</span> </div> <div class="periodical"> <em>Physical Review D</em>, Nov 2025 </div> <div class="periodical"> </div> <div class="links"> <a href="https://doi.org/10.1103/vlm2-tm6k" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a href="http://arxiv.org/abs/2409.09124" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://ui.adsabs.harvard.edu/abs/2025PhRvD.112j3503P" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">2025PhRvD.112j3503P</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{{Pandey}, Shivam and {Modi}, Chirag and {Wandelt}, Benjamin D. and {Bartlett}, Deaglan J. and {Bayer}, Adrian E. and {Bryan}, Greg L. and {Ho}, Matthew and {Lavaux}, Guilhem and {Makinen}, T. Lucas and {Villaescusa-Navarro}, Francisco}</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{{Creating halos with autoregressive multistage networks}}</span><span class="p">,</span>
+  <span class="na">journal</span> <span class="p">=</span> <span class="s">{Physical Review D}</span><span class="p">,</span>
+  <span class="na">keywords</span> <span class="p">=</span> <span class="s">{Cosmology, Astrophysics - Cosmology and Nongalactic Astrophysics, Astrophysics - Astrophysics of Galaxies, Statistics - Machine Learning}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2025}</span><span class="p">,</span>
+  <span class="na">month</span> <span class="p">=</span> <span class="nv">nov</span><span class="p">,</span>
+  <span class="na">volume</span> <span class="p">=</span> <span class="s">{112}</span><span class="p">,</span>
+  <span class="na">number</span> <span class="p">=</span> <span class="s">{10}</span><span class="p">,</span>
+  <span class="na">eid</span> <span class="p">=</span> <span class="s">{103503}</span><span class="p">,</span>
+  <span class="na">pages</span> <span class="p">=</span> <span class="s">{103503}</span><span class="p">,</span>
+  <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.1103/vlm2-tm6k}</span><span class="p">,</span>
+  <span class="na">archiveprefix</span> <span class="p">=</span> <span class="s">{arXiv}</span><span class="p">,</span>
+  <span class="na">primaryclass</span> <span class="p">=</span> <span class="s">{astro-ph.CO}</span><span class="p">,</span>
+  <span class="na">adsurl</span> <span class="p">=</span> <span class="s">{https://ui.adsabs.harvard.edu/abs/2025PhRvD.112j3503P}</span><span class="p">,</span>
+  <span class="na">adsnote</span> <span class="p">=</span> <span class="s">{Provided by the SAO/NASA Astrophysics Data System}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li></ol> <h2 class="bibliography">2024</h2> <ol class="bibliography"><li> <div class="row"> <div class="col col-sm-2 abbr"> <abbr class="badge rounded w-100">OJAp</abbr> </div> <div id="2024OJAp....7E..54H" class="col-sm-8"> <div class="title">LtU-ILI: An All-in-One Framework for Implicit Inference in Astrophysics and Cosmology</div> <div class="author"> Matthew Ho, Deaglan J. Bartlett, Nicolas Chartier, and <span class="more-authors" title="click to view 12 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '12 more authors' ? 'Carolina Cuesta-Lazaro, Simon Ding, Axel Lapel, Pablo Lemos, Christopher C. Lovell, T. Lucas Makinen, Chirag Modi, Viraj Pandya, Shivam Pandey, Lucia A. Perez, Benjamin Wandelt, Greg L. Bryan' : '12 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">12 more authors</span> </div> <div class="periodical"> <em>The Open Journal of Astrophysics</em>, Jul 2024 </div> <div class="periodical"> </div> <div class="links"> <a href="https://doi.org/10.33232/001c.120559" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a href="http://arxiv.org/abs/2402.05137" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://ui.adsabs.harvard.edu/abs/2024OJAp....7E..54H" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">2024OJAp....7E..54H</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{{Ho}, Matthew and {Bartlett}, Deaglan J. and {Chartier}, Nicolas and {Cuesta-Lazaro}, Carolina and {Ding}, Simon and {Lapel}, Axel and {Lemos}, Pablo and {Lovell}, Christopher C. and {Makinen}, T. Lucas and {Modi}, Chirag and {Pandya}, Viraj and {Pandey}, Shivam and {Perez}, Lucia A. and {Wandelt}, Benjamin and {Bryan}, Greg L.}</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{{LtU-ILI: An All-in-One Framework for Implicit Inference in Astrophysics and Cosmology}}</span><span class="p">,</span>
+  <span class="na">journal</span> <span class="p">=</span> <span class="s">{The Open Journal of Astrophysics}</span><span class="p">,</span>
+  <span class="na">keywords</span> <span class="p">=</span> <span class="s">{Astrophysics - Instrumentation and Methods for Astrophysics, Astrophysics - Cosmology and Nongalactic Astrophysics, Astrophysics - Astrophysics of Galaxies, Computer Science - Machine Learning}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2024}</span><span class="p">,</span>
+  <span class="na">month</span> <span class="p">=</span> <span class="nv">jul</span><span class="p">,</span>
+  <span class="na">volume</span> <span class="p">=</span> <span class="s">{7}</span><span class="p">,</span>
+  <span class="na">eid</span> <span class="p">=</span> <span class="s">{54}</span><span class="p">,</span>
+  <span class="na">pages</span> <span class="p">=</span> <span class="s">{54}</span><span class="p">,</span>
+  <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.33232/001c.120559}</span><span class="p">,</span>
+  <span class="na">archiveprefix</span> <span class="p">=</span> <span class="s">{arXiv}</span><span class="p">,</span>
+  <span class="na">primaryclass</span> <span class="p">=</span> <span class="s">{astro-ph.IM}</span><span class="p">,</span>
+  <span class="na">adsurl</span> <span class="p">=</span> <span class="s">{https://ui.adsabs.harvard.edu/abs/2024OJAp....7E..54H}</span><span class="p">,</span>
+  <span class="na">adsnote</span> <span class="p">=</span> <span class="s">{Provided by the SAO/NASA Astrophysics Data System}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li></ol> <h2 class="bibliography">2023</h2> <ol class="bibliography"> <li> <div class="row"> <div class="col col-sm-2 abbr"> <abbr class="badge rounded w-100">ApJS</abbr> </div> <div id="2023ApJS..265...54V" class="col-sm-8"> <div class="title">The CAMELS Project: Public Data Release</div> <div class="author"> Francisco Villaescusa-Navarro, Shy Genel, Daniel Anglés-Alcázar, and <span class="more-authors" title="click to view 45 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '45 more authors' ? 'Lucia A. Perez, Pablo Villanueva-Domingo, Digvijay Wadekar, Helen Shao, Faizan G. Mohammad, Sultan Hassan, Emily Moser, Erwin T. Lau, Luis Fernando Machado Poletti Valle, Andrina Nicola, Leander Thiele, Yongseok Jo, Oliver H. E. Philcox, Benjamin D. Oppenheimer, Megan Tillman, ChangHoon Hahn, Neerav Kaushal, Alice Pisani, Matthew Gebhardt, Ana Maria Delgado, Joyce Caliendo, Christina Kreisch, Kaze W. K. Wong, William R. Coulton, Michael Eickenberg, Gabriele Parimbelli, Yueying Ni, Ulrich P. Steinwandel, Valentina La Torre, Romeel Dave, Nicholas Battaglia, Daisuke Nagai, David N. Spergel, Lars Hernquist, Blakesley Burkhart, Desika Narayanan, Benjamin Wandelt, Rachel S. Somerville, Greg L. Bryan, Matteo Viel, Yin Li, Vid Irsic, Katarina Kraljic, Federico Marinacci, Mark Vogelsberger' : '45 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">45 more authors</span> </div> <div class="periodical"> <em>The Astrophysical Journal Supplement Series</em>, Apr 2023 </div> <div class="periodical"> </div> <div class="links"> <a href="https://doi.org/10.3847/1538-4365/acbf47" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a href="http://arxiv.org/abs/2201.01300" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://ui.adsabs.harvard.edu/abs/2023ApJS..265...54V" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">2023ApJS..265...54V</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{{Villaescusa-Navarro}, Francisco and {Genel}, Shy and {Angl{\'e}s-Alc{\'a}zar}, Daniel and {Perez}, Lucia A. and {Villanueva-Domingo}, Pablo and {Wadekar}, Digvijay and {Shao}, Helen and {Mohammad}, Faizan G. and {Hassan}, Sultan and {Moser}, Emily and {Lau}, Erwin T. and {Machado Poletti Valle}, Luis Fernando and {Nicola}, Andrina and {Thiele}, Leander and {Jo}, Yongseok and {Philcox}, Oliver H.~E. and {Oppenheimer}, Benjamin D. and {Tillman}, Megan and {Hahn}, ChangHoon and {Kaushal}, Neerav and {Pisani}, Alice and {Gebhardt}, Matthew and {Delgado}, Ana Maria and {Caliendo}, Joyce and {Kreisch}, Christina and {Wong}, Kaze W.~K. and {Coulton}, William R. and {Eickenberg}, Michael and {Parimbelli}, Gabriele and {Ni}, Yueying and {Steinwandel}, Ulrich P. and {La Torre}, Valentina and {Dave}, Romeel and {Battaglia}, Nicholas and {Nagai}, Daisuke and {Spergel}, David N. and {Hernquist}, Lars and {Burkhart}, Blakesley and {Narayanan}, Desika and {Wandelt}, Benjamin and {Somerville}, Rachel S. and {Bryan}, Greg L. and {Viel}, Matteo and {Li}, Yin and {Irsic}, Vid and {Kraljic}, Katarina and {Marinacci}, Federico and {Vogelsberger}, Mark}</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{{The CAMELS Project: Public Data Release}}</span><span class="p">,</span>
+  <span class="na">journal</span> <span class="p">=</span> <span class="s">{The Astrophysical Journal Supplement Series}</span><span class="p">,</span>
+  <span class="na">keywords</span> <span class="p">=</span> <span class="s">{Cosmology, Hydrodynamical simulations, Astrostatistics, Galaxy formation, Astrophysics - Cosmology and Nongalactic Astrophysics, Astrophysics - Astrophysics of Galaxies, Astrophysics - Instrumentation and Methods for Astrophysics, Computer Science - Artificial Intelligence, Computer Science - Machine Learning}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2023}</span><span class="p">,</span>
+  <span class="na">month</span> <span class="p">=</span> <span class="nv">apr</span><span class="p">,</span>
+  <span class="na">volume</span> <span class="p">=</span> <span class="s">{265}</span><span class="p">,</span>
+  <span class="na">number</span> <span class="p">=</span> <span class="s">{2}</span><span class="p">,</span>
+  <span class="na">eid</span> <span class="p">=</span> <span class="s">{54}</span><span class="p">,</span>
+  <span class="na">pages</span> <span class="p">=</span> <span class="s">{54}</span><span class="p">,</span>
+  <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.3847/1538-4365/acbf47}</span><span class="p">,</span>
+  <span class="na">archiveprefix</span> <span class="p">=</span> <span class="s">{arXiv}</span><span class="p">,</span>
+  <span class="na">primaryclass</span> <span class="p">=</span> <span class="s">{astro-ph.CO}</span><span class="p">,</span>
+  <span class="na">adsurl</span> <span class="p">=</span> <span class="s">{https://ui.adsabs.harvard.edu/abs/2023ApJS..265...54V}</span><span class="p">,</span>
+  <span class="na">adsnote</span> <span class="p">=</span> <span class="s">{Provided by the SAO/NASA Astrophysics Data System}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li> <li> <div class="row"> <div class="col col-sm-2 abbr"> <abbr class="badge rounded w-100">ApJ</abbr> </div> <div id="2023ApJ...944...27S" class="col-sm-8"> <div class="title">Robust Field-level Inference of Cosmological Parameters with Dark Matter Halos</div> <div class="author"> Helen Shao, Francisco Villaescusa-Navarro, Pablo Villanueva-Domingo, and <span class="more-authors" title="click to view 13 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '13 more authors' ? 'Romain Teyssier, Lehman H. Garrison, Marco Gatti, Derek Inman, Yueying Ni, Ulrich P. Steinwandel, Mihir Kulkarni, Eli Visbal, Greg L. Bryan, Daniel Anglés-Alcázar, Tiago Castro, Elena Hernández-Martı́nez, Klaus Dolag' : '13 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">13 more authors</span> </div> <div class="periodical"> <em>The Astrophysical Journal</em>, Feb 2023 </div> <div class="periodical"> </div> <div class="links"> <a href="https://doi.org/10.3847/1538-4357/acac7a" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a href="http://arxiv.org/abs/2209.06843" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://ui.adsabs.harvard.edu/abs/2023ApJ...944...27S" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">2023ApJ...944...27S</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{{Shao}, Helen and {Villaescusa-Navarro}, Francisco and {Villanueva-Domingo}, Pablo and {Teyssier}, Romain and {Garrison}, Lehman H. and {Gatti}, Marco and {Inman}, Derek and {Ni}, Yueying and {Steinwandel}, Ulrich P. and {Kulkarni}, Mihir and {Visbal}, Eli and {Bryan}, Greg L. and {Angl{\'e}s-Alc{\'a}zar}, Daniel and {Castro}, Tiago and {Hern{\'a}ndez-Mart{\'\i}nez}, Elena and {Dolag}, Klaus}</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{{Robust Field-level Inference of Cosmological Parameters with Dark Matter Halos}}</span><span class="p">,</span>
+  <span class="na">journal</span> <span class="p">=</span> <span class="s">{The Astrophysical Journal}</span><span class="p">,</span>
+  <span class="na">keywords</span> <span class="p">=</span> <span class="s">{Cosmology, Sigma8, Density parameters, Cosmological parameters from large-scale structure, 343, 1455, 372, 340, Astrophysics - Cosmology and Nongalactic Astrophysics, Astrophysics - Astrophysics of Galaxies, Astrophysics - Instrumentation and Methods for Astrophysics, Computer Science - Artificial Intelligence, Computer Science - Machine Learning}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2023}</span><span class="p">,</span>
+  <span class="na">month</span> <span class="p">=</span> <span class="nv">feb</span><span class="p">,</span>
+  <span class="na">volume</span> <span class="p">=</span> <span class="s">{944}</span><span class="p">,</span>
+  <span class="na">number</span> <span class="p">=</span> <span class="s">{1}</span><span class="p">,</span>
+  <span class="na">eid</span> <span class="p">=</span> <span class="s">{27}</span><span class="p">,</span>
+  <span class="na">pages</span> <span class="p">=</span> <span class="s">{27}</span><span class="p">,</span>
+  <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.3847/1538-4357/acac7a}</span><span class="p">,</span>
+  <span class="na">archiveprefix</span> <span class="p">=</span> <span class="s">{arXiv}</span><span class="p">,</span>
+  <span class="na">primaryclass</span> <span class="p">=</span> <span class="s">{astro-ph.CO}</span><span class="p">,</span>
+  <span class="na">adsurl</span> <span class="p">=</span> <span class="s">{https://ui.adsabs.harvard.edu/abs/2023ApJ...944...27S}</span><span class="p">,</span>
+  <span class="na">adsnote</span> <span class="p">=</span> <span class="s">{Provided by the SAO/NASA Astrophysics Data System}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li> <li> <div class="row"> <div class="col col-sm-2 abbr"> <abbr class="badge rounded w-100">ApJ</abbr> </div> <div id="2023ApJ...944...67J" class="col-sm-8"> <div class="title">Calibrating Cosmological Simulations with Implicit Likelihood Inference Using Galaxy Growth Observables</div> <div class="author"> Yongseok Jo, Shy Genel, Benjamin Wandelt, and <span class="more-authors" title="click to view 7 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '7 more authors' ? 'Rachel S. Somerville, Francisco Villaescusa-Navarro, Greg L. Bryan, Daniel Anglés-Alcázar, Daniel Foreman-Mackey, Dylan Nelson, Ji-hoon Kim' : '7 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">7 more authors</span> </div> <div class="periodical"> <em>The Astrophysical Journal</em>, Feb 2023 </div> <div class="periodical"> </div> <div class="links"> <a href="https://doi.org/10.3847/1538-4357/aca8fe" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a href="http://arxiv.org/abs/2211.16461" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://ui.adsabs.harvard.edu/abs/2023ApJ...944...67J" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">2023ApJ...944...67J</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{{Jo}, Yongseok and {Genel}, Shy and {Wandelt}, Benjamin and {Somerville}, Rachel S. and {Villaescusa-Navarro}, Francisco and {Bryan}, Greg L. and {Angl{\'e}s-Alc{\'a}zar}, Daniel and {Foreman-Mackey}, Daniel and {Nelson}, Dylan and {Kim}, Ji-hoon}</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{{Calibrating Cosmological Simulations with Implicit Likelihood Inference Using Galaxy Growth Observables}}</span><span class="p">,</span>
+  <span class="na">journal</span> <span class="p">=</span> <span class="s">{The Astrophysical Journal}</span><span class="p">,</span>
+  <span class="na">keywords</span> <span class="p">=</span> <span class="s">{Nonparametric inference, Likelihood ratio test, Magnetohydrodynamical simulations, Cosmological parameters, Neural networks, Bayes' Theorem, Galaxy formation, 1903, 1942, 1966, 339, 1933, 1924, 595, Astrophysics - Cosmology and Nongalactic Astrophysics, Astrophysics - Astrophysics of Galaxies}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2023}</span><span class="p">,</span>
+  <span class="na">month</span> <span class="p">=</span> <span class="nv">feb</span><span class="p">,</span>
+  <span class="na">volume</span> <span class="p">=</span> <span class="s">{944}</span><span class="p">,</span>
+  <span class="na">number</span> <span class="p">=</span> <span class="s">{1}</span><span class="p">,</span>
+  <span class="na">eid</span> <span class="p">=</span> <span class="s">{67}</span><span class="p">,</span>
+  <span class="na">pages</span> <span class="p">=</span> <span class="s">{67}</span><span class="p">,</span>
+  <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.3847/1538-4357/aca8fe}</span><span class="p">,</span>
+  <span class="na">archiveprefix</span> <span class="p">=</span> <span class="s">{arXiv}</span><span class="p">,</span>
+  <span class="na">primaryclass</span> <span class="p">=</span> <span class="s">{astro-ph.CO}</span><span class="p">,</span>
+  <span class="na">adsurl</span> <span class="p">=</span> <span class="s">{https://ui.adsabs.harvard.edu/abs/2023ApJ...944...67J}</span><span class="p">,</span>
+  <span class="na">adsnote</span> <span class="p">=</span> <span class="s">{Provided by the SAO/NASA Astrophysics Data System}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li> </ol> <h2 class="bibliography">2021</h2> <ol class="bibliography"><li> <div class="row"> <div class="col col-sm-2 abbr"> <abbr class="badge rounded w-100">ApJ</abbr> </div> <div id="2021ApJ...915...71V" class="col-sm-8"> <div class="title">The CAMELS Project: Cosmology and Astrophysics with Machine-learning Simulations</div> <div class="author"> Francisco Villaescusa-Navarro, Daniel Anglés-Alcázar, Shy Genel, and <span class="more-authors" title="click to view 19 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '19 more authors' ? 'David N. Spergel, Rachel S. Somerville, Romeel Dave, Annalisa Pillepich, Lars Hernquist, Dylan Nelson, Paul Torrey, Desika Narayanan, Yin Li, Oliver Philcox, Valentina La Torre, Ana Maria Delgado, Shirley Ho, Sultan Hassan, Blakesley Burkhart, Digvijay Wadekar, Nicholas Battaglia, Gabriella Contardo, Greg L. Bryan' : '19 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">19 more authors</span> </div> <div class="periodical"> <em>The Astrophysical Journal</em>, Jul 2021 </div> <div class="periodical"> </div> <div class="links"> <a href="https://doi.org/10.3847/1538-4357/abf7ba" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a href="http://arxiv.org/abs/2010.00619" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...915...71V" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">2021ApJ...915...71V</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{{Villaescusa-Navarro}, Francisco and {Angl{\'e}s-Alc{\'a}zar}, Daniel and {Genel}, Shy and {Spergel}, David N. and {Somerville}, Rachel S. and {Dave}, Romeel and {Pillepich}, Annalisa and {Hernquist}, Lars and {Nelson}, Dylan and {Torrey}, Paul and {Narayanan}, Desika and {Li}, Yin and {Philcox}, Oliver and {La Torre}, Valentina and {Maria Delgado}, Ana and {Ho}, Shirley and {Hassan}, Sultan and {Burkhart}, Blakesley and {Wadekar}, Digvijay and {Battaglia}, Nicholas and {Contardo}, Gabriella and {Bryan}, Greg L.}</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{{The CAMELS Project: Cosmology and Astrophysics with Machine-learning Simulations}}</span><span class="p">,</span>
+  <span class="na">journal</span> <span class="p">=</span> <span class="s">{The Astrophysical Journal}</span><span class="p">,</span>
+  <span class="na">keywords</span> <span class="p">=</span> <span class="s">{Cosmology, Cosmological parameters from large-scale structure, Galaxy formation, Astrostatistics, 343, 340, 595, 1882, Astrophysics - Cosmology and Nongalactic Astrophysics, Astrophysics - Astrophysics of Galaxies, Astrophysics - Instrumentation and Methods for Astrophysics}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2021}</span><span class="p">,</span>
+  <span class="na">month</span> <span class="p">=</span> <span class="nv">jul</span><span class="p">,</span>
+  <span class="na">volume</span> <span class="p">=</span> <span class="s">{915}</span><span class="p">,</span>
+  <span class="na">number</span> <span class="p">=</span> <span class="s">{1}</span><span class="p">,</span>
+  <span class="na">eid</span> <span class="p">=</span> <span class="s">{71}</span><span class="p">,</span>
+  <span class="na">pages</span> <span class="p">=</span> <span class="s">{71}</span><span class="p">,</span>
+  <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.3847/1538-4357/abf7ba}</span><span class="p">,</span>
+  <span class="na">archiveprefix</span> <span class="p">=</span> <span class="s">{arXiv}</span><span class="p">,</span>
+  <span class="na">primaryclass</span> <span class="p">=</span> <span class="s">{astro-ph.CO}</span><span class="p">,</span>
+  <span class="na">adsurl</span> <span class="p">=</span> <span class="s">{https://ui.adsabs.harvard.edu/abs/2021ApJ...915...71V}</span><span class="p">,</span>
+  <span class="na">adsnote</span> <span class="p">=</span> <span class="s">{Provided by the SAO/NASA Astrophysics Data System}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li></ol> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Greg L. Bryan. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "about",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-research",
+          title: "research",
+          description: "Research highlights and software projects.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
+          },
+        },{id: "nav-publications",
+          title: "publications",
+          description: "Refereed publications and recent preprints, in reverse chronological order.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
+        },{id: "nav-repositories",
+          title: "repositories",
+          description: "Open-source codes I develop and contribute to.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/repositories/";
+          },
+        },{id: "projects-the-circumgalactic-amp-intergalactic-medium",
+          title: 'The Circumgalactic &amp;amp; Intergalactic Medium',
+          description: "The gas that fuels and regulates galaxy growth",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/cgm_igm/";
+            },},{id: "projects-enzo-amp-enzo-e",
+          title: 'Enzo &amp;amp; Enzo-E',
+          description: "Open-source adaptive mesh refinement codes for astrophysics",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/enzo/";
+            },},{id: "projects-the-first-stars",
+          title: 'The First Stars',
+          description: "The formation of the first luminous objects in the universe",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/first_stars/";
+            },},{id: "projects-galaxy-formation",
+          title: 'Galaxy Formation',
+          description: "Simulating how galaxies form and evolve across cosmic time",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/galaxy_formation/";
+            },},{id: "projects-grackle",
+          title: 'Grackle',
+          description: "A chemistry and radiative cooling library for astrophysical simulations",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/grackle/";
+            },},{id: "projects-learning-the-universe",
+          title: 'Learning the Universe',
+          description: "Simons Collaboration — inferring the universe&#39;s initial conditions with simulation-based inference",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/learning_the_universe/";
+            },},{id: "projects-machine-learning-amp-ai",
+          title: 'Machine Learning &amp;amp; AI',
+          description: "Connecting simulations to observations with machine learning and simulation-based inference",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/ml_ai/";
+            },},{id: "projects-x-ray-clusters",
+          title: 'X-ray Clusters',
+          description: "The most massive collapsed structures in the universe",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/xray_clusters/";
+            },},{id: "teachings-data-science-fundamentals",
+          title: 'Data Science Fundamentals',
+          description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/data-science-fundamentals/";
+            },},{id: "teachings-introduction-to-machine-learning",
+          title: 'Introduction to Machine Learning',
+          description: "This course provides an introduction to machine learning concepts, algorithms, and applications. Students will learn about supervised and unsupervised learning, model evaluation, and practical implementations.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/introduction-to-machine-learning/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%67%62%72%79%61%6E@%61%73%74%72%6F.%63%6F%6C%75%6D%62%69%61.%65%64%75", "_blank");
+        },
+      },{
+        id: 'social-orcid',
+        title: 'ORCID',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://orcid.org/0000-0003-2630-9228", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/gregbryan", "_blank");
+        },
+      },{
+        id: 'social-rss',
+        title: 'RSS Feed',
+        section: 'Socials',
+        handler: () => {
+          window.open("/feed.xml", "_blank");
+        },
+      },{
+        id: 'social-custom_social',
+        title: 'Custom_social',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://ui.adsabs.harvard.edu/search/q=author%3A%22Bryan%2C%20Greg%20L.%22&sort=date%20desc", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
